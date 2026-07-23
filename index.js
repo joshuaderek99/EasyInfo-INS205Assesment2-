@@ -5,9 +5,11 @@
 const API_KEY = "AIzaSyAEWPx9Wf7X5gip6--4j8bCcUuxhm37tXM";
 
 
+//im sooooo tired :(
 
 async function fetchData(){
-    
+    const resultsContainer = document.getElementById("resultsContainer");
+    resultsContainer.innerHTML = "<p>Searching for Videos...</p>"
     try{
 
         const searchQuery = document.getElementById("searchbar").value.toLowerCase();
@@ -20,34 +22,34 @@ async function fetchData(){
 
         const data = await response.json();
 
-        const resultsContainer = document.getElementById("resultsContainer");
         resultsContainer.innerHTML = "";
 
         data.items.forEach(item => {
             const videoId = item.id.videoId;
             const title = item.snippet.title;
             const channel = item.snippet.channelTitle;
+            const thumbnailUrl = item.snippet.thumbnails.high.url;
 
             const videoCard = document.createElement('div');
             videoCard.className = 'video-card';
 
             videoCard.innerHTML = `
-                <div class = "iframe-wrapper">
-                    <iframe>
-                        src="https://www.youtube.come/embed/${videoId}"
-                        title = "${title}"
-                        frameborder = "0"
-                        allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <h3>${title}</h3>
-                <p class ="channel-name">${channel}</p>
+                <a href="https://www.youtube.com/watch?v=${videoId}"  target="_blank" rel="onopener noreferrer" class="video-link">
+                    <div class="thumbnail-container">
+                        <img src="${thumbnailUrl}" alt="${title}">
+                        <span class="play-badge">Watch</span>
+                    </div>
+
+                    <div class="video-info">
+                        <h3 class="video-title">${title}</h3>
+                        <p class="channel-name">${channel}</p> 
+                </a>
+          
                 `;
             
             resultsContainer.appendChild(videoCard);
+            searchBooks(searchQuery);
 
-            
             
 
             console.log(`Title:${item.snippet.title}`);
@@ -63,5 +65,56 @@ async function fetchData(){
 
     catch(error){
         console.error(error);
+        resultsContainer.innerHTML= "<p>Failed to load Videos, Check connection or Change Browser and Try Again</p>"
+    }
+}
+
+// for the books
+
+async function searchBooks(searchQuery){
+    const booksContainer = document.getElementById("booksContainer")
+    booksContainer.innerHTML = "<p>Searching for books</p>"
+    try{
+
+        const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(searchQuery)}&limit=50`);
+        const bookdata = await response.json();
+
+
+        booksContainer.innerHTML="";
+        if(!booksContainer.docs || booksContainer.docs.length===0){
+            booksContainer.innerHTML =" <p>Books not Found</p>"
+            return;
+        }
+
+        console.log(bookdata.docs)
+        console.log(bookdata)
+        bookdata.docs.forEach(book=>{
+            const title = book.title;
+            const author = book.author_name ? book.author_name[0] : "Unknown Author";
+            const coverUrl = book.cover_i
+            ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+            : "https://via.placeholder.com/150x200?text=No+Cover";
+
+            const bookCard = document.createElement("div");
+            bookCard.className = "video-card";
+
+            bookCard.innerHTML=`
+            <div class = thumbnail-container>
+                <img src="${coverUrl}" alt="${title}" class = "video-thumbnail">
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">${title}</h3>
+                <p class="channel-name">${author}</p>
+            </div>
+            `;
+
+            booksContainer.appendChild(bookCard)
+            
+        })       
+    }
+
+    catch(error){
+        console.error(error);
+        booksContainer.innerHTML = "<p>Failed to load books, check internet connection or change browser and try again</p>"
     }
 }
