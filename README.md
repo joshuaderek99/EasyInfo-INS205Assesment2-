@@ -7,6 +7,8 @@ HOW TO USE:
 
 2. Click the search button.
 
+NOTE: THIS WEB APP NEEDS AN INTERNET CONNECTION
+
 The web app will provide you with the top youtube videos, and books on whatever you typed in.
 
 Enjoy :P
