@@ -2,8 +2,6 @@
 
 
 
-const API_KEY = "AIzaSyAEWPx9Wf7X5gip6--4j8bCcUuxhm37tXM";
-
 
 //im sooooo tired :(
 
