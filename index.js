@@ -118,3 +118,5 @@ async function searchBooks(searchQuery){
         booksContainer.innerHTML = "<p>Failed to load books, check internet connection or change browser and try again</p>"
     }
 }
+
+//(T_T) finally
