@@ -9,7 +9,7 @@ const API_KEY = "AIzaSyAEWPx9Wf7X5gip6--4j8bCcUuxhm37tXM";
 
 async function fetchData(){
     const resultsContainer = document.getElementById("resultsContainer");
-    resultsContainer.innerHTML = "<p>Searching for Videos...</p>"
+    resultsContainer.innerHTML = `<p class="info-text">Searching for Videos...</p>`
     try{
 
         const searchQuery = document.getElementById("searchbar").value.toLowerCase();
@@ -65,7 +65,7 @@ async function fetchData(){
 
     catch(error){
         console.error(error);
-        resultsContainer.innerHTML= "<p>Failed to load Videos, Check connection or Change Browser and Try Again</p>"
+        resultsContainer.innerHTML= `<p class="info-text">Failed to load Videos, Check connection or Change Browser and Try Again</p>`
     }
 }
 

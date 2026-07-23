@@ -89,8 +89,11 @@ label{
 
 }
 
-#resultContainer p{
+#resultsContainer .info-text{
     color: white;
+    text-align: center;
+    grid-column: 1/-1;
+    margin: 20px auto;
 }
 
 .video-card{
@@ -168,9 +171,11 @@ label{
 
 }
 
-#booksContainer p{
-    display: block;
+#booksContainer .info-text{
     color: white;
+    text-align: center;
+    grid-column: 1/-1;
+    margin: 20px auto;
 }
 
 #booksContainer .thumbnail-container{
