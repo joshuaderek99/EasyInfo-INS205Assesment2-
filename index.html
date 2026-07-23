@@ -7,12 +7,16 @@
     <title>Easy Info</title>
 </head>
 <body>
+    <script src="index.js"></script>
+    
     <h1 id ="title">EasyInfo</h1>
-    <form >
-        <label for="SearchBar">Search: </label>
-        <input type="text" id = "searchbar" placeholder="Type what you would like to learn about here. e.g. Cooking, CSC202,e.t.c">
-        <input type="reset" id = "reset" value="Clear" >
-        <input type="submit" id="search" value="Search">
-    </form>
+    <h1 id = "description"></h1>
+
+    <label for="SearchBar">Search: </label>
+    <input type="text" id = "searchbar" placeholder="Type what you would like to learn about here. e.g. Cooking, CSC202,e.t.c">
+    <input type="reset" id = "reset" value="Clear" >
+    <button onclick="fetchData()" id="search">Search</button>
+
+    <div id = "resultsContainer" class = "results-grid"></div>
 </body>
 </html>

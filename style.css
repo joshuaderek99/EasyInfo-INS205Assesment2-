@@ -7,6 +7,10 @@ body{
     background-size: cover;
 }
 
+h3{
+    color: #94a3b8;
+}
+
 #title{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #f8fafc;
@@ -35,9 +39,6 @@ body{
 }
 
 #reset:hover{
-    border-style: solid;
-    border-color: #38bdf8;
-    border-width: 2px;
     background-color: black;
     color:#94a3b8;
 }
@@ -56,9 +57,7 @@ body{
 }
 
 #search:hover{
-    border-style: solid;
-    border-color: #34d399;
-    border-width: 2px;
+
     color:#94a3b8;
     background-color: black;
     
@@ -72,6 +71,7 @@ label{
     padding-right: 5px;
     color: #94a3b8;
 }
+
 
 @keyframes buttonBounce{
     20%{transform: rotateZ(5deg);}
